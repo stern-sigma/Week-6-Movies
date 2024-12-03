@@ -3,6 +3,8 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
 import sqlalchemy
+from os import environ
+from dotenv import load_dotenv
 
 def re_init_db(conn: sqlalchemy.Connection):
     with open('schema.sql', 'r') as fp:
@@ -50,7 +52,8 @@ def import_movies_to_database(conn) -> None:
 
 
 def main():
-    engine = create_engine("postgresql://stern:@localhost:5432/movies")
+    load_dotenv()
+    engine = create_engine(environ["SQLALCHEMY_URL"])
     conn = engine.connect()
     re_init_db(conn)
     import_movies_to_database(conn)

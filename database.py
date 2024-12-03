@@ -6,11 +6,20 @@ from psycopg2 import sql
 from psycopg2.extensions import connection, cursor
 from datetime import date
 from rich.progress import Progress, TextColumn, BarColumn, MofNCompleteColumn
+from os import environ
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def __connection(func):
     def inner(*args, **kwargs):
-        conn = psycopg2.connect("dbname=movies user=stern host=localhost")
+        conn = psycopg2.connect(
+            user = environ["DATABASE_USERNAME"],
+            password = environ["DATABASE_PASSWORD"],
+            host = environ["DATABASE_IP"],
+            port = environ["DATABASE_PORT"],
+            database = environ["DATABASE_NAME"]
+        )
         curr = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         kwargs['conn'] = conn
         kwargs['curr'] = curr
