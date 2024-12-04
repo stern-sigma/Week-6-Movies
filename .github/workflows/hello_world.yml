@@ -11,5 +11,5 @@ jobs:
     steps:
       - run: sudo apt-get install python-is-python3
       - run: sudo apt-get install python-pip
-      - run: pip install pytest
+      - run: pip3 install pytest
       - run: pytest
