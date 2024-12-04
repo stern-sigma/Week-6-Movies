@@ -50,9 +50,11 @@ jobs:
     needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
+      - name: Debug Workspace
+        run: ls -alR
       - name: Deploy to ec2
         if: ${{ success() }}
-        uses: easingthemes/ssh-deploy@main
+        uses: easingthemes/ssh-deploy@main --delete
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i"
