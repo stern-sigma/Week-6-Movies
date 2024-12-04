@@ -50,7 +50,7 @@ jobs:
     needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Staging server
+      - name: Deploy to ec2
         if: ${{ success() }}
         uses: easingthemes/ssh-deploy@main
         with:
