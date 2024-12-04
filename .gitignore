@@ -2,3 +2,4 @@
 .pemkey
 .env
 __pychache__/
+.ssh
