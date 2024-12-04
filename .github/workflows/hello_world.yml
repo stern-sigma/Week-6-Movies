@@ -11,6 +11,8 @@ jobs:
     steps:
       - run: sudo apt-get install python-is-python3
       - run: sudo apt-get install pip
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - run: ls
       - run: pip install pytest
       - run: pytest
