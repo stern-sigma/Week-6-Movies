@@ -25,13 +25,11 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pylint *.py --fail-under 8
   deploy:
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
-      - dependsOn:
-        - test
-        - lint
-      - condition: succeded()
       - name: Deploy to Staging server
+        if: ${{ success() }}
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
