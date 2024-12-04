@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install python
+      - run: sudo apt-get install python-is-python3
       - run: sudo apt-get install python-pip
       - run: sudo apt-get pip install pytest
       - run: pytest
