@@ -54,7 +54,7 @@ jobs:
         run: ls -alR
       - name: Deploy to ec2
         if: ${{ success() }}
-        uses: easingthemes/ssh-deploy@main --delete
+        uses: easingthemes/ssh-deploy@main 
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i"
