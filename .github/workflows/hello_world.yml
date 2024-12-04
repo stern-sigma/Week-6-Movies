@@ -11,5 +11,7 @@ jobs:
     steps:
       - run: sudo apt-get install python-is-python3
       - run: sudo apt-get install pip
+      - run: |
+          ls ${{ github.workspace }}
       - run: pip install pytest
       - run: pytest
