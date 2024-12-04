@@ -11,8 +11,14 @@ jobs:
     steps:
       - run: sudo apt-get install python-is-python3
       - run: sudo apt-get install pip
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - run: ls
+      - run: actions/checkout@v3
       - run: pip install pytest
       - run: pytest
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get install python-is-python3
+      - run: sudo apt-get install pip
+      - run: actions/checkout@v3
+      - run: pip install pylint
+      - run: pylint *.py --fail-under 8
