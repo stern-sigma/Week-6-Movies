@@ -80,5 +80,5 @@ jobs:
           port: 22
           script: |
             cd app
-            ls
+            bash init_self
       
