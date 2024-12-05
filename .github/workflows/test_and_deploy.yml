@@ -1,4 +1,4 @@
-name: Hello World
+name: Test and Deploy
 run-name: ${{ github.actor }} is attempting to deploy to the cloud.
 on: [push]
 jobs:
