@@ -75,7 +75,7 @@ def endpoint_get_movies(): #pylint: disable=too-many-locals,too-many-return-stat
         return {"error": str(e)}, 500
 
 
-@app.route("/movies/<int:movie_id>", methods=["GET", "PATCH", "DELETE"])
+@app.route("/movies/<int:movie_id>", methods=["GET", "DELETE"])
 def endpoint_get_movie(movie_id: int):
     'Handles the mvoies/id endpoint'
     if request.method == "GET":
