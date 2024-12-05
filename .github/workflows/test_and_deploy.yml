@@ -79,6 +79,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            sudo dnf install python3.11
+            sudo dnf install python-pip
             cd app
-            bash init_self
+            python3.11 -m venv .venv
+            source .venv/bin/activate
+            pip install --upgrade pip
+            pip install -e .
+            pkill -9 -f script.py
+            nohup python3 src/stern_movies_api/app.py &
       
