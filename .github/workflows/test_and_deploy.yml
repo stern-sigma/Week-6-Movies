@@ -63,7 +63,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
   build:
-    name: Build
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
@@ -72,7 +72,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.REMOTE_TARGET }}
+          port: 22
           script: |
             cd app
             ls
