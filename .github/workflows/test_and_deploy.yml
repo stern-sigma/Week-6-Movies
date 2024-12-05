@@ -87,5 +87,5 @@ jobs:
             source .venv/bin/activate
             pip install --upgrade pip
             pip install -e .
-            echo "fuser -k 5000/tcp | at now + 1 minute" | at now + 1 minute
-            echo "nohup python3 src/stern_movies_api/api.py &" | at now + 1 minute
+            fuser -k 5000/tcp | at now + 1 minute
+            nohup python app.py > /dev/null 2>&1 &
