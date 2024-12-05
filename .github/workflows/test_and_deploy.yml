@@ -88,4 +88,4 @@ jobs:
             pip install --upgrade pip
             pip install -e .
             fuser -k 5000/tcp | at now + 1 minute
-            nohup python3.11 app.py > /dev/null 2>&1 &
+            nohup python3.11 src/stern_movies_api/app.py > /dev/null 2>&1 &
