@@ -16,7 +16,7 @@ def re_init_db(conn: sqlalchemy.Connection):
         sql_command = text(command)
         conn.execute(sql_command)
 
-def import_movies_to_database(conn) -> None:
+def import_movies_to_database(conn: sqlalchemy.Connection) -> None:
     l_df = pd.read_sql('SELECT * FROM languages', conn)
     languages = {x[1]['language_name']: x[1]['language_id'] for x in l_df.iterrows()}
     c_df = pd.read_sql('SELECT * FROM countries;', conn)
@@ -40,13 +40,20 @@ def import_movies_to_database(conn) -> None:
     movie_genres = pd.read_csv('imdb_movies.csv', usecols=['names', 'genre'])
     movie_genres.columns = ['title', 'genre']
     movie_genres['title'] = movie_genres['title'].apply(lambda x: movie_id_dict[x])
+    print(movie_genres)
     movies_genres_info = []
-    for movie in movie_genres:
-        if not isinstance(movie, dict):
-            continue
-        movies_genres_info.extend({movie['title']: genre_dict[x] for x in movie['genre'].split()})
+    for movie in movie_genres.iterrows():
+        curr_movie = movie[1]
+        print(curr_movie)
+        if isinstance(curr_movie['genre'], str):
+            movies_genres_info.extend(
+                {'movie_id': curr_movie['title'],
+                 'genre_id': genre_dict[x]} 
+                 for x in curr_movie['genre'].split(', '))
+    print(movies_genres_info)
     genre_df = pd.DataFrame(movies_genres_info)
-    genre_df.to_sql('genres', conn, if_exists='append')
+    print(genre_df)
+    genre_df.to_sql('genre_assignments', conn, if_exists='append', index=False)
     conn.commit()
     return movie_id_dict
 
