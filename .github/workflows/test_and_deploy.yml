@@ -88,4 +88,5 @@ jobs:
             pip install -e .
             fuser -k 5000/tcp
             nohup python3 src/stern_movies_api/app.py &
+            exit ssh
       
