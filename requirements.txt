@@ -1,8 +1,5 @@
 flask
-pandas
-sqlalchemy
 psycopg2-binary
-rich
 python-dotenv
 pytest
 pylint

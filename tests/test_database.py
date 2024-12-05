@@ -4,7 +4,7 @@ from unittest.mock import patch
 import pytest
 from datetime import date
 
-from database import (get_movies, get_movie_by_id, create_movie, 
+from stern_movies_api.database import (get_movies, get_movie_by_id, create_movie, 
                       get_genre_id, get_country_id, get_status_id,
                       get_language_id)
 
@@ -16,6 +16,10 @@ def mock_connection():
         mock_cur = mock_con.cursor.return_value
         yield mock_con, mock_cur
         assert mock_con.close.called, "Connection not closed."
+@pytest.fixture(autouse=True)
+def mock_env():
+    with patch('os.environ') as mock_env:
+        yield
 
 
 @pytest.mark.parametrize("sort_by,sort_order",

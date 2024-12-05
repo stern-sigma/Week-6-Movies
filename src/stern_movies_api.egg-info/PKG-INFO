@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: stern_movies_api
+Version: 0.1.0
+Summary: A simple api for searching imdb movies.
+Author: Samuel Stern
+Project-URL: Homepage, https://github.com/stern-sigma/Week-6-Movies
+Requires-Dist: astroid==3.3.5
+Requires-Dist: blinker==1.9.0
+Requires-Dist: click==8.1.7
+Requires-Dist: dill==0.3.9
+Requires-Dist: Flask==3.1.0
+Requires-Dist: iniconfig==2.0.0
+Requires-Dist: isort==5.13.2
+Requires-Dist: itsdangerous==2.2.0
+Requires-Dist: Jinja2==3.1.4
+Requires-Dist: MarkupSafe==3.0.2
+Requires-Dist: mccabe==0.7.0
+Requires-Dist: packaging==24.2
+Requires-Dist: platformdirs==4.3.6
+Requires-Dist: pluggy==1.5.0
+Requires-Dist: psycopg2-binary==2.9.10
+Requires-Dist: pylint==3.3.2
+Requires-Dist: pytest==8.3.4
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: tomlkit==0.13.2
+Requires-Dist: Werkzeug==3.1.3

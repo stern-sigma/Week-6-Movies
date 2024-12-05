@@ -2,7 +2,7 @@
 #pylint: disable=unused-variable
 from datetime import datetime
 from flask import Flask, request
-from database import get_movies, get_movie_by_id, create_movie, delete_movie, get_movie_by_country
+from stern_movies_api.database import get_movies, get_movie_by_id, create_movie, delete_movie, get_movie_by_country
 
 
 app = Flask(__name__)

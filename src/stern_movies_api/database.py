@@ -3,9 +3,7 @@ from typing import Any
 import psycopg2
 import psycopg2.extras
 from psycopg2 import sql
-from psycopg2.extensions import connection, cursor
 from datetime import date
-from rich.progress import Progress, TextColumn, BarColumn, MofNCompleteColumn
 from os import environ
 from dotenv import load_dotenv
 
@@ -78,24 +76,15 @@ WHERE title ILIKE %s;''',
         else:
             curr.execute(q)
     movies = curr.fetchall()
-    progress = Progress(
-    TextColumn("[progress.description]{task.description}"),
-    BarColumn(),
-    MofNCompleteColumn(),
-    transient=True
-)
-    with progress:
-        tracker = progress.add_task("Loading genres...", total=len(movies))
-        for movie in movies:
-            curr.execute('''SELECT genre_name
+    for movie in movies:
+        curr.execute('''SELECT genre_name
 FROM genre_assignments 
 JOIN genres 
-    ON (genre_assignments.genre_id=genres.genre_id) 
+ON (genre_assignments.genre_id=genres.genre_id) 
 WHERE movie_id=%s;''',
 (movie['movie_id'],))
-            genres = curr.fetchall()
-            movie['genres'] = [genre['genre_name'] for genre in genres]
-            progress.update(tracker, advance=1)
+        genres = curr.fetchall()
+        movie['genres'] = [genre['genre_name'] for genre in genres]
     return movies
 
 
