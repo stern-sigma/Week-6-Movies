@@ -89,4 +89,3 @@ jobs:
             pip install -e .
             fuser -k 5000/tcp | at now + 1 minute
             nohup python3 src/stern_movies_api/api.py & | at now + 1 minute
-            exit 0
