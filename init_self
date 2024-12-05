@@ -1,8 +1,0 @@
-sudo dnf install python3.11
-sudo dnf install python-pip
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -e .
-pkill -9 -f script.py
-nohup python3 src/stern_movies_api/app.py &
