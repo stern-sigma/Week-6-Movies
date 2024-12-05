@@ -45,13 +45,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e .
-      - run: pylint *.py --fail-under 8
+      - run: pylint app/stern_movies_api/*.py --fail-under 8
   deploy:
     needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            pyproject.toml
+            init_self
       - name: Deploy to ec2
         if: ${{ success() }}
         uses: easingthemes/ssh-deploy@main 
