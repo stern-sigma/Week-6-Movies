@@ -27,7 +27,7 @@ The server runs on port `5000` by default. However, this can be reconfigured in 
 **Methods:** `GET`, `POST`
 
 #### `GET`:
-Returns a list of all movies in the database (⚠️ **Warning:** this can be slow).  
+Without any parameters returns a list of *all* the movies in the database.<span style="color:red;">⚠️ **Warning:** this can be slow.</span>    
 Optionally, the following query parameters are supported:  
 - `sort_by`: Determines which field the list should be sorted by. Acceptable values:  
   - `movie_id`, `title`, `score`, `budget`, `revenue`.  
