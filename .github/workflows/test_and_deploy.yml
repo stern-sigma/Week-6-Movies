@@ -81,11 +81,12 @@ jobs:
           script: |
             sudo dnf install python3.11
             sudo dnf install python-pip
+            sudo dnf install at
             cd app
             python3.11 -m venv .venv
             source .venv/bin/activate
             pip install --upgrade pip
             pip install -e .
-            fuser -k 5000/tcp
-            nohup python src/stern_movies_api/api.py > nohup.out 2>&1 & 
+            fuser -k 5000/tcp | at now + 1 minute
+            nohup python3 src/stern_movies_api/api.py & | at now + 1 minute
             exit 0
