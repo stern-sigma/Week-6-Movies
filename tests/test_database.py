@@ -16,9 +16,10 @@ def mock_connection():
         mock_cur = mock_con.cursor.return_value
         yield mock_con, mock_cur
         assert mock_con.close.called, "Connection not closed."
+
 @pytest.fixture(autouse=True)
 def mock_env():
-    with patch('os.environ') as mock_env:
+    with patch('stern_movies_api.database.environ') as mock_env:
         yield
 
 
