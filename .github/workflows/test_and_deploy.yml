@@ -2,10 +2,6 @@ name: Test and Deploy
 run-name: ${{ github.actor }} is attempting to deploy to the cloud.
 on: [push]
 jobs:
-  speak:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello World!"
   test:
     runs-on: ubuntu-latest
     steps:
@@ -87,5 +83,5 @@ jobs:
             source .venv/bin/activate
             pip install --upgrade pip
             pip install -e .
-            fuser -k 5000/tcp | at now + 1 minute
+            fuser -k 5000/tcp
             nohup python3.11 src/stern_movies_api/app.py > /dev/null 2>&1 &
