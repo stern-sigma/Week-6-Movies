@@ -52,7 +52,6 @@ jobs:
           sparse-checkout: |
             src
             pyproject.toml
-            init_self
       - name: Deploy to ec2
         if: ${{ success() }}
         uses: easingthemes/ssh-deploy@main 
