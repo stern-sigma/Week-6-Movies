@@ -1,5 +1,3 @@
-[![Test and Deploy](https://github.com/stern-sigma/Week-6-Movies/actions/workflows/test_and_deploy.yml/badge.svg)](https://github.com/stern-sigma/Week-6-Movies/actions/workflows/test_and_deploy.yml)
-
 # Stern's Movies API Documentation
 
 Welcome to Stern's Movies API! Follow these steps to get the API up and running:
@@ -71,3 +69,5 @@ Deletes the movie with the specified `movie_id`.
 - `sort_by` and `sort_order` are supported as described in the `/movies` endpoint.
 
 ---
+[![Test and Deploy](https://github.com/stern-sigma/Week-6-Movies/actions/workflows/test_and_deploy.yml/badge.svg)](https://github.com/stern-sigma/Week-6-Movies/actions/workflows/test_and_deploy.yml)
+
